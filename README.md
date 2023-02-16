@@ -29,24 +29,23 @@ Configurations are written to default *conf_dir*. On MacOS located at *~/Library
 
 Building:
 
-'''
+```
 cargo build
-'''
+```
 
 Running
 
-'''
+```
 cargo run configure openweather
 cargo run get weatherapi Toledo 2
-
-'''
+```
 
 or
 
-'''
+```
 ./target/debug/simple-weather configure weatherapi
 ./target/debug/simple-weather get weatherapi Toledo 2
-'''
+```
 
 Testing
 
