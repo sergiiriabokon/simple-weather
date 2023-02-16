@@ -27,20 +27,23 @@ weather get openweather Toledo
 
 Configurations are written to default *conf_dir*. On MacOS located at *~/Library/Application Support*
 
-Building:
+Building
+--------
+Building process downloads all the dependent libraries and push the results to *target/debug* folder.
 
 ```
 cargo build
 ```
 
 Running
-
+-------
+Running is possible either with build and run:
 ```
 cargo run configure openweather
 cargo run get weatherapi Toledo 2
 ```
 
-or
+or directly from *target/debug* folder
 
 ```
 ./target/debug/simple-weather configure weatherapi
@@ -48,7 +51,8 @@ or
 ```
 
 Testing
-
+-------
+Tests should be performed after writing API keys through *configure* command.
 ```
 cargo test
 ```
