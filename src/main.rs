@@ -55,7 +55,7 @@ impl Error for NoConfDir {}
  * 
  * @return String name of the provider (weatherapi or openweather)
  */
-fn getProviderFromArgs() -> String {
+fn get_provider_from_args() -> String {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 3 {
@@ -70,7 +70,7 @@ fn getProviderFromArgs() -> String {
  * 
  * @return String city name (like Toledo)
  */
-fn getCityFromArgs() -> String {
+fn get_city_from_args() -> String {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 4 {
@@ -85,7 +85,7 @@ fn getCityFromArgs() -> String {
  * 
  * @return i32 number of days
  */
-fn getDaysFromArgs() -> i32  {
+fn get_days_from_args() -> i32  {
     let args: Vec<String> = env::args().collect();
 
     if args.len() < 5 {
@@ -107,7 +107,7 @@ fn getDaysFromArgs() -> i32  {
  * weather configure weatherapi
  */
 fn configure() -> Result<(), Box<dyn Error>> {
-    let provider = getProviderFromArgs();
+    let provider = get_provider_from_args();
 
     println!("Please, provide API key for the provider {}", provider);
 
@@ -131,8 +131,8 @@ fn configure() -> Result<(), Box<dyn Error>> {
 /**
  * Implementation of OpenWeather provider.
  */
-fn getOpenWeather(city: &String, days: i32) -> Result<(), Box<dyn Error>> {
-    let provider = OPENWEATHER; //getProviderFromArgs();
+fn get_open_weather(city: &String, _: i32) -> Result<(), Box<dyn Error>> {
+    let provider = OPENWEATHER;
 
     let config = Config::new(CONF_FILE)?;
 
@@ -157,8 +157,8 @@ fn getOpenWeather(city: &String, days: i32) -> Result<(), Box<dyn Error>> {
 /**
  * Implementation of WeatherAPI provider.
  */
-fn getWeatherApi(city: &String, days: i32) -> Result<(), Box<dyn Error>> {
-    let provider = WEATHERAPI;// getProviderFromArgs();
+fn get_weather_api(city: &String, days: i32) -> Result<(), Box<dyn Error>> {
+    let provider = WEATHERAPI;
 
     let config = Config::new(CONF_FILE).map_err(|e| format!("Failed to open conf file: {:?}", e))?;
 
@@ -195,13 +195,13 @@ fn getWeatherApi(city: &String, days: i32) -> Result<(), Box<dyn Error>> {
  * weather get weatherapi Toledo 1
  */
 fn weather() -> Result<(), Box<dyn Error>> {
-    let provider = getProviderFromArgs();
-    let city = getCityFromArgs();
-    let days = getDaysFromArgs();
+    let provider = get_provider_from_args();
+    let city = get_city_from_args();
+    let days = get_days_from_args();
 
     match provider.as_str().trim() {
-        OPENWEATHER => getOpenWeather(&city, days),
-        WEATHERAPI => getWeatherApi(&city, days),
+        OPENWEATHER => get_open_weather(&city, days),
+        WEATHERAPI => get_weather_api(&city, days),
         _ => Ok(println!("unkown provider")),
     }
 }
@@ -258,14 +258,14 @@ mod tests {
 
     #[test]
     fn test_weatherapi() {
-        let r = getWeatherApi(&"Toledo".to_string(), 2);
+        let r = get_weather_api(&"Toledo".to_string(), 2);
         assert!(r.is_ok());
     }
     
 
     #[test]
     fn test_openweather() {
-        let r = getOpenWeather(&"Toledo".to_string(), 2);
+        let r = get_open_weather(&"Toledo".to_string(), 2);
         assert!(r.is_ok());
     }
 }
