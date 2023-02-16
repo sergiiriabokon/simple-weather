@@ -1,0 +1,8 @@
+Simple Weather CLI
+------------------
+
+The main commands are:
+
+
+weather configure <provider>
+weather get <provider> <city> [days]
