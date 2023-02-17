@@ -19,10 +19,10 @@ weather get <provider> <city> [days]
 Examples:
 
 ```
-**weather configure** openweather
-**weather configure** weatherapi
-**weather get** weatherapi Toledo 2
-**weather get** openweather Toledo
+weather configure openweather
+weather configure weatherapi
+weather get weatherapi Toledo 2
+weather get openweather Toledo
 ```
 
 Configurations are written to default *conf_dir*. On MacOS located at *~/Library/Application Support*
