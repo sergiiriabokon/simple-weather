@@ -81,3 +81,12 @@ Tests should be performed after writing API keys through *configure* command.
 ```
 cargo test
 ```
+
+API documentation
+-----------------
+API documentation is located at doc/* folder. Navigate doc/simple-weather/index.html file to see the description. 
+
+To rebuild documentation to *target/doc* run
+```
+cargo doc --no-deps --open
+```
