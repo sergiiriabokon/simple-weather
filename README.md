@@ -84,7 +84,7 @@ cargo test
 
 API documentation
 -----------------
-API documentation is located at doc/* folder. Navigate doc/simple-weather/index.html file to see the description. 
+API documentation is located at doc/* folder. Navigate *doc/simple-weather/index.html* file to see the description. 
 
 To rebuild documentation to *target/doc* run
 ```
