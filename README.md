@@ -35,6 +35,12 @@ Building process downloads all the dependent libraries and push the results to *
 cargo build
 ```
 
+To build a release version, run
+```
+cargo build --release
+```
+This one compiles all the depenencies and the source files resulting to *target/release/simple-weather*. 
+
 Running
 -------
 Running is possible either with build and run:
